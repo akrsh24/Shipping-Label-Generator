@@ -1,0 +1,14 @@
+{
+    "profiles": [
+        {
+                    "name": "akarsh",
+                    "age": 23,
+                    "hobbies": ["coding", "sleeping"]
+        },
+        {
+                    "name": "anushka",
+                    "age": 24,
+                    "hobbies": ["ignoring", "no-replying"]
+        }
+    ]
+}

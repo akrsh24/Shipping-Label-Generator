@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    padding: 80px;
+  }
+  
+  #details{
+    padding: 5px;
+    margin-left:675px;
+    margin-top:0px;
+  }
+  
+  .row{
+    padding-left: 350px;
+  }
+  
+  .btn{
+             margin-left: 300px;
+  }

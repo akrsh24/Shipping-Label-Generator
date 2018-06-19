@@ -1,0 +1,14 @@
+{
+    "details": [
+        {
+            "id": 1,
+            "name": "akarsh",
+            "city": "noida"
+        },
+        {
+            "id": 2,
+            "name": "anushka",
+            "city": "east-delhi"
+        }
+    ]
+}
