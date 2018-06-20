@@ -68,9 +68,9 @@ class Transaction extends Component {
                     <label>Price</label>
                     <input value={this.state.price} className="form-control" onChange={this.handlePrice} />
                   </div>
-                  <div>
+                  <div className="btn-group btn-group-sm" id="btn-1">
                     <button className="btn btn-primary" onClick={this.handlePrevious}>Previous</button>
-                    <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                    <button className="btn btn-default" onClick={this.handleNext}>Next</button>
                   </div>
                 </form>
               </div>

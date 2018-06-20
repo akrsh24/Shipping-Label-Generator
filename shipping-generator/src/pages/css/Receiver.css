@@ -13,8 +13,9 @@ h1{
   padding-left: 350px;
 }
 
-#btnSearch,
-#btnClear{
-    display: inline-block;
-    vertical-align: top;
+#btn-1{
+  padding: 5px;
+  margin-left:255px;
+  margin-top:0px;
+  margin-right: 25px;
 }

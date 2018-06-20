@@ -42,7 +42,7 @@ class App extends Component {
       this.setState({
         step: this.state.step + 1,
         quantity: newDetail.quantity,
-        price:newDetail.price
+        price: newDetail.price
       })
     }
   }
@@ -65,7 +65,7 @@ class App extends Component {
     else if (type === 'transaction') {
       this.setState({
         step: this.state.step - 1,
-        price:newDetail.price,
+        price: newDetail.price,
         quantity: newDetail.quantity
       })
     }
@@ -109,19 +109,21 @@ class App extends Component {
     else if (this.state.step === 4) {
       return (
         <div>
-          <div class="jumbotron">
-            <h1 class="display-4">Shipping Label Generator</h1>
+          <div className="jumbotron">
+            <h1 className="display-4">Shipping Label Generator</h1>
             <div id="displays">
-              <p>Sender's Name: {this.state.sname}</p>
-              <p>Sender's City: {this.state.scity}</p>
-              <p>Receiver's Name: {this.state.rname}</p>
-              <p>Receiver's City: {this.state.rcity}</p>
-              <p>Quantity: {this.state.quantity}</p>
-              <p>Price: {this.state.price}</p>
+              <p><strong>Sender's Name: {this.state.sname}</strong></p>
+              <p><strong>Sender's City: {this.state.scity}</strong></p>
+              <p><strong>Receiver's Name: {this.state.rname}</strong></p>
+              <p><strong>Receiver's City: {this.state.rcity}</strong></p>
+              <p><strong>Quantity: {this.state.quantity}</strong></p>
+              <p><strong>Price: {this.state.price}</strong></p>
             </div>
-            <hr class="my-4" />
-            <p><button className="btn btn-primary" onClick={this.lastPrevious}>Previous</button>
-            <button className="btn btn-danger" onClick={this.lastNext}>Next</button></p>
+            <hr className="my-4" />
+            <div className="btn-group btn-group-lg" id="btn-2">
+              <button className="btn btn-primary" onClick={this.lastPrevious}>Previous</button>
+              <button className="btn btn-danger" onClick={this.lastNext}>Next</button>
+            </div>
           </div>
         </div>
       );
