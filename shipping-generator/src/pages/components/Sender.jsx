@@ -11,7 +11,7 @@ class Sender extends Component {
     }
     this.handleCity = this.handleCity.bind(this);
     this.handleName = this.handleName.bind(this);
-    this.handleNext=this.handleNext.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
 
   handleName(e) {
@@ -34,11 +34,13 @@ class Sender extends Component {
     }
     console.log("New details submitted");
     console.log(this.props.addUser);
-    this.props.next('sender',newDetails);
+    this.props.next('sender', newDetails);
   }
 
   render() {
-
+    const style = {
+      width: '25%'
+    };
     return (
       <div>
         <h1>Sender's Details</h1>
@@ -56,11 +58,17 @@ class Sender extends Component {
                     <label>City</label>
                     <input value={this.state.city} className="form-control" onChange={this.handleCity} />
                   </div>
-                  <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                  <div className="btn-group btn-group-sm" id="bt-2">
+                    <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                  </div>
                 </form>
               </div>
             </div>
           </div>
+        </div>
+        <hr />
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={style}>1</div>
         </div>
       </div>
     );

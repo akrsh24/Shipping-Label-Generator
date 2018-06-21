@@ -50,7 +50,9 @@ class Receiver extends Component {
   }
 
   render() {
-
+    const style={
+      width:'50%'
+    };
     return (
       <div>
         <h1>Receiver's Details</h1>
@@ -69,13 +71,17 @@ class Receiver extends Component {
                     <input value={this.state.city} className="form-control" onChange={this.handleCity} />
                   </div>
                   <div className="btn-group btn-group-sm" id="btn-1">
-                    <button className="btn btn-primary" onClick={this.handlePrevious}>Previous</button>
-                    <button className="btn btn-default" onClick={this.handleNext}>Next</button>
+                    <button className="btn btn-default" onClick={this.handlePrevious}>Previous</button>
+                    <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
+        </div>
+        <hr />
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={style}>2</div>
         </div>
       </div >
     );

@@ -10,9 +10,12 @@
     }
 
     .row{
-        padding-left: 350px;
+        padding-left: 370px;
     }
 
-    .btn{
-                 margin-left: 300px;
-    }
+    #bt-2{
+        padding: 5px;
+        margin-left:275px;
+        margin-top:0px;
+        margin-right: 25px;
+      }

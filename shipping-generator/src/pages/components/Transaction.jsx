@@ -41,8 +41,8 @@ class Transaction extends Component {
   handlePrevious(e) {
     e.preventDefault();
     var newDetails = {
-        quantity: this.state.quantity,
-        price: this.state.price
+      quantity: this.state.quantity,
+      price: this.state.price
     }
     console.log("Previous button");
     console.log(this.props.addUser);
@@ -50,7 +50,9 @@ class Transaction extends Component {
   }
 
   render() {
-
+    const style={
+      width:'75%'
+    };
     return (
       <div>
         <h1>Transaction's Details</h1>
@@ -69,13 +71,17 @@ class Transaction extends Component {
                     <input value={this.state.price} className="form-control" onChange={this.handlePrice} />
                   </div>
                   <div className="btn-group btn-group-sm" id="btn-1">
-                    <button className="btn btn-primary" onClick={this.handlePrevious}>Previous</button>
-                    <button className="btn btn-default" onClick={this.handleNext}>Next</button>
+                    <button className="btn btn-default" onClick={this.handlePrevious}>Previous</button>
+                    <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
+        </div>
+        <hr />
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={style}>3</div>
         </div>
       </div>
     );
