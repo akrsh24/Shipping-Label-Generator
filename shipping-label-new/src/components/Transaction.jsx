@@ -6,48 +6,57 @@ class Transaction extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 3,
-            quantity: props.quantity || '',
-            price:  props.price || '',
+            transaction: {
+                quantity: props.transaction.quantity ,
+                price: props.transaction.price ,
+            }
         };
         this.handleQuantity = this.handleQuantity.bind(this);
         this.handlePrice = this.handlePrice.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
+        this.clear=this.clear(this);
     }
 
     handlePrice(e) {
         this.setState({
-            price: e.target.value
+            transaction: {
+                ...this.state.transaction,
+                price: e.target.value
+            }
         });
     }
 
     handleQuantity(e) {
         this.setState({
-            quantity: e.target.value
+            transaction: {
+                ...this.state.transaction,
+                quantity: e.target.value
+            }
         });
     }
 
     handleNext(e) {
         e.preventDefault();
-        var newDetails = {
-            quantity: this.state.quantity,
-            price: this.state.price
-        }
-        console.log("New details submitted", this.state);
-        alert('Transaction Detail is added');
-        this.props.addDetails('transaction', newDetails);
+        var transactionDetails = this.state.transaction
+        console.log("New details submitted", transactionDetails);
+        this.props.addDetails('transaction', transactionDetails);
         this.props.history.push('/display');
+    }
+    clear(e){
+        this.setState({
+            transaction: {
+                price: '',
+                quantity: '' 
+            }
+        })
     }
 
     handlePrevious(e) {
         e.preventDefault();
-        var newDetails = {
-            quantity: this.state.quantity,
-            price: this.state.price
-        }
-        console.log("New details submitted", newDetails);
-        this.props.addDetails('transaction', newDetails);
+        var transactionDetails = this.state.transaction
+        console.log("New details submitted", transactionDetails);
+        this.props.addDetails('transaction', transactionDetails);
         this.props.history.push('/receiver');
     }
 
@@ -66,15 +75,16 @@ class Transaction extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Price</label>
-                                        <input value={this.state.price} className="form-control" onChange={this.handlePrice} />
+                                        <input value={this.state.transaction.price} className="form-control" onChange={this.handlePrice} />
                                     </div>
                                     <div className="form-group">
                                         <label>Quantity</label>
-                                        <input value={this.state.quantity} className="form-control" onChange={this.handleQuantity} />
+                                        <input value={this.state.transaction.quantity} className="form-control" onChange={this.handleQuantity} />
                                     </div>
                                     <div className="btn-group btn-group-sm" id="button-1">
                                         <button className="btn btn-default" onClick={this.handlePrevious}>Previous</button>
                                         <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                                        <button className="btn btn-danger" onClick={this.clear}>Clear</button>
                                     </div>
                                 </form>
                             </div>

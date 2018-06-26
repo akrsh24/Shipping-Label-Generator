@@ -6,36 +6,50 @@ class SenderForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 1,
-            name: props.sname|| '',
-            city: props.scity|| '',
+            sender: {
+                name: props.sender.name,
+                city: props.sender.city 
+            }
         };
         this.handleCity = this.handleCity.bind(this);
         this.handleName = this.handleName.bind(this);
         this.handleNext = this.handleNext.bind(this);
+        this.clear=this.clear.bind(this);
+
     }
 
     handleName(e) {
         this.setState({
-            name: e.target.value
+            sender: {
+                ...this.state.sender,
+                name: e.target.value
+            }
         });
     }
 
     handleCity(e) {
         this.setState({
-            city: e.target.value
+            sender:{
+                ...this.state.sender,
+                   city:e.target.value
+            }
         });
+    }
+
+    clear(e){
+        this.setState({
+            sender: {
+                name: '',
+                city: '' 
+            }
+        })
     }
 
     handleNext(e) {
         e.preventDefault();
-        var newDetails = {
-            name: this.state.name,
-            city: this.state.city
-        }
-        console.log("New details submitted", this.state);
-        alert('Sender Detail is added');
-        this.props.addDetails('sender', newDetails);
+        var senderDetails= this.state.sender
+        console.log("New details submitted", senderDetails);
+        this.props.addDetails('sender', senderDetails);
         this.props.history.push('/receiver');
     }
 
@@ -54,14 +68,16 @@ class SenderForm extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input value={this.state.name} className="form-control" onChange={this.handleName} />
+                                        <input value={this.state.sender.name} className="form-control" onChange={this.handleName} />
                                     </div>
                                     <div className="form-group">
                                         <label>City</label>
-                                        <input value={this.state.city} className="form-control" onChange={this.handleCity} />
+                                        <input value={this.state.sender.city} className="form-control" onChange={this.handleCity} />
                                     </div>
                                     <div className="btn-group btn-group-sm" id="button-1">
                                         <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                                        <button className="btn btn-danger" onClick={this.clear}>Clear</button>
+
                                     </div>
                                 </form>
                             </div>

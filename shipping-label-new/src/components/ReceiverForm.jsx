@@ -6,48 +6,58 @@ class ReceiverForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 2,
-            name: props.rname|| '',
-            city: props.rcity|| '',
+            receiver: {
+                name: props.receiver.name ,
+                city: props.receiver.city 
+            }
         };
         this.handleCity = this.handleCity.bind(this);
         this.handleName = this.handleName.bind(this);
         this.handleNext = this.handleNext.bind(this);
-        this.handlePrevious=this.handlePrevious.bind(this);
+        this.handlePrevious = this.handlePrevious.bind(this);
+        this.clear=this.clear(this);
+
     }
 
     handleName(e) {
         this.setState({
-            name: e.target.value
+            receiver: {
+                ...this.state.receiver,
+                name: e.target.value
+            }
         });
     }
 
     handleCity(e) {
         this.setState({
-            city: e.target.value
+            receiver: {
+                ...this.state.receiver,
+                city: e.target.value
+            }
         });
     }
 
     handleNext(e) {
         e.preventDefault();
-        var newDetails = {
-            name: this.state.name,
-            city: this.state.city
-        }
-        console.log("New details submitted", this.state);
-        alert('Receiver Detail is added');
-        this.props.addDetails('receiver', newDetails);
+        var receiverDetails= this.state.receiver
+        console.log("New details submitted", receiverDetails);
+        this.props.addDetails('receiver', receiverDetails);
         this.props.history.push('/transaction');
+    }
+    clear(e){
+        this.setState({
+            receiver: {
+                name: '',
+                city: '' 
+            }
+        })
     }
 
     handlePrevious(e) {
         e.preventDefault();
-        var newDetails = {
-            name: this.state.name,
-            city: this.state.city
-        }
-        console.log("New details submitted", newDetails);
-        this.props.addDetails('receiver', newDetails);
+        var receiverDetails= this.state.receiver
+        console.log("New details submitted", receiverDetails);
+        this.props.addDetails('receiver', receiverDetails);
         this.props.history.push('/sender');
     }
 
@@ -66,15 +76,16 @@ class ReceiverForm extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input value={this.state.name} className="form-control" onChange={this.handleName} />
+                                        <input value={this.state.receiver.name} className="form-control" onChange={this.handleName} />
                                     </div>
                                     <div className="form-group">
                                         <label>City</label>
-                                        <input value={this.state.city} className="form-control" onChange={this.handleCity} />
+                                        <input value={this.state.receiver.city} className="form-control" onChange={this.handleCity} />
                                     </div>
                                     <div className="btn-group btn-group-sm" id="button-1">
                                         <button className="btn btn-default" onClick={this.handlePrevious}>Previous</button>
                                         <button className="btn btn-primary" onClick={this.handleNext}>Next</button>
+                                        <button className="btn btn-danger" onClick={this.clear}>Clear</button>
                                     </div>
                                 </form>
                             </div>

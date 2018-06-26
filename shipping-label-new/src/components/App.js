@@ -17,35 +17,43 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      details={  
-      sname: '',
-      scity: '',
-      rname: '',
-      rcity: '',
-      quantity: '',
-      price: ''
-    }
+      step: 1,
+      sender: {},
+      receiver: {},
+      transaction: {}
+    };
+    this.addDetails = this.addDetails.bind(this);
+    this.handleLast=this.handleLast.bind(this);
   }
 
-    this.addDetails = this.addDetails.bind(this);
-  }
   addDetails(type, newDetail) {
     if (type === 'sender') {
       this.setState({
-        sname: newDetail.name,
-        scity: newDetail.city
+        step: 2,
+        sender: newDetail
       })
     }
     else if (type === 'receiver') {
       this.setState({
-        rname: newDetail.name,
-        rcity: newDetail.city
+        step: 3,
+        receiver: newDetail
       })
     }
     else if (type === 'transaction') {
       this.setState({
-        quantity: newDetail.quantity,
-        price: newDetail.price
+        step: 4,
+        transaction: newDetail
+      })
+    }
+  }
+
+  handleLast(type) {
+    if (type === 'home') {
+      this.setState({
+        step: 1,
+        sender: {},
+        receiver: {},
+        transaction: {}
       })
     }
   }
@@ -74,10 +82,10 @@ class App extends Component {
             <div className="well">
               <div>
                 <Route exact path="/" component={Home} />
-                <Route path="/sender" component={(props) => <Sender {...props} addDetails={this.addDetails} sname={this.state.sname} scity={this.state.scity} />} />
-                <Route path="/receiver" component={(props) => <Receiver {...props} addDetails={this.addDetails} rname={this.state.rname} rcity={this.state.rcity} />} />
-                <Route path="/display" component={(props) => <Display {...props} displayInfo={this.state} />} />
-                <Route path="/transaction" component={(props) => <Transaction {...props} addDetails={this.addDetails} price={this.state.price} quantity={this.state.quantity} />} />
+                <Route path="/sender" component={(props) => <Sender {...props} addDetails={this.addDetails} sender={this.state.sender} />} />
+                <Route path="/receiver" component={(props) => <Receiver {...props} addDetails={this.addDetails} receiver={this.state.receiver} />} />
+                <Route path="/display" component={(props) => <Display {...props} displayInfo={this.state} handleLast={this.handleLast} />} />
+                <Route path="/transaction" component={(props) => <Transaction {...props} addDetails={this.addDetails} transaction={this.state.transaction} />} />
               </div>
             </div>
           </div>
